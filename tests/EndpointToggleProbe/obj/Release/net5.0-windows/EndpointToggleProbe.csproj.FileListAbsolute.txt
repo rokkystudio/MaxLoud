@@ -1,0 +1,16 @@
+D:\PROJECTS\MaxLoud\tests\EndpointToggleProbe\bin\Release\net5.0-windows\EndpointToggleProbe.exe
+D:\PROJECTS\MaxLoud\tests\EndpointToggleProbe\bin\Release\net5.0-windows\EndpointToggleProbe.deps.json
+D:\PROJECTS\MaxLoud\tests\EndpointToggleProbe\bin\Release\net5.0-windows\EndpointToggleProbe.runtimeconfig.json
+D:\PROJECTS\MaxLoud\tests\EndpointToggleProbe\bin\Release\net5.0-windows\EndpointToggleProbe.runtimeconfig.dev.json
+D:\PROJECTS\MaxLoud\tests\EndpointToggleProbe\bin\Release\net5.0-windows\EndpointToggleProbe.dll
+D:\PROJECTS\MaxLoud\tests\EndpointToggleProbe\bin\Release\net5.0-windows\ref\EndpointToggleProbe.dll
+D:\PROJECTS\MaxLoud\tests\EndpointToggleProbe\bin\Release\net5.0-windows\EndpointToggleProbe.pdb
+D:\PROJECTS\MaxLoud\tests\EndpointToggleProbe\obj\Release\net5.0-windows\EndpointToggleProbe.csproj.AssemblyReference.cache
+D:\PROJECTS\MaxLoud\tests\EndpointToggleProbe\obj\Release\net5.0-windows\EndpointToggleProbe.GeneratedMSBuildEditorConfig.editorconfig
+D:\PROJECTS\MaxLoud\tests\EndpointToggleProbe\obj\Release\net5.0-windows\EndpointToggleProbe.AssemblyInfoInputs.cache
+D:\PROJECTS\MaxLoud\tests\EndpointToggleProbe\obj\Release\net5.0-windows\EndpointToggleProbe.AssemblyInfo.cs
+D:\PROJECTS\MaxLoud\tests\EndpointToggleProbe\obj\Release\net5.0-windows\EndpointToggleProbe.csproj.CoreCompileInputs.cache
+D:\PROJECTS\MaxLoud\tests\EndpointToggleProbe\obj\Release\net5.0-windows\EndpointToggleProbe.dll
+D:\PROJECTS\MaxLoud\tests\EndpointToggleProbe\obj\Release\net5.0-windows\ref\EndpointToggleProbe.dll
+D:\PROJECTS\MaxLoud\tests\EndpointToggleProbe\obj\Release\net5.0-windows\EndpointToggleProbe.pdb
+D:\PROJECTS\MaxLoud\tests\EndpointToggleProbe\obj\Release\net5.0-windows\EndpointToggleProbe.genruntimeconfig.cache

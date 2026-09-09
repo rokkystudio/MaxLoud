@@ -1,0 +1,16 @@
+D:\PROJECTS\MaxLoud\tests\EndpointMeterProbe\bin\Release\net5.0-windows\EndpointMeterProbe.exe
+D:\PROJECTS\MaxLoud\tests\EndpointMeterProbe\bin\Release\net5.0-windows\EndpointMeterProbe.deps.json
+D:\PROJECTS\MaxLoud\tests\EndpointMeterProbe\bin\Release\net5.0-windows\EndpointMeterProbe.runtimeconfig.json
+D:\PROJECTS\MaxLoud\tests\EndpointMeterProbe\bin\Release\net5.0-windows\EndpointMeterProbe.runtimeconfig.dev.json
+D:\PROJECTS\MaxLoud\tests\EndpointMeterProbe\bin\Release\net5.0-windows\EndpointMeterProbe.dll
+D:\PROJECTS\MaxLoud\tests\EndpointMeterProbe\bin\Release\net5.0-windows\ref\EndpointMeterProbe.dll
+D:\PROJECTS\MaxLoud\tests\EndpointMeterProbe\bin\Release\net5.0-windows\EndpointMeterProbe.pdb
+D:\PROJECTS\MaxLoud\tests\EndpointMeterProbe\obj\Release\net5.0-windows\EndpointMeterProbe.csproj.AssemblyReference.cache
+D:\PROJECTS\MaxLoud\tests\EndpointMeterProbe\obj\Release\net5.0-windows\EndpointMeterProbe.GeneratedMSBuildEditorConfig.editorconfig
+D:\PROJECTS\MaxLoud\tests\EndpointMeterProbe\obj\Release\net5.0-windows\EndpointMeterProbe.AssemblyInfoInputs.cache
+D:\PROJECTS\MaxLoud\tests\EndpointMeterProbe\obj\Release\net5.0-windows\EndpointMeterProbe.AssemblyInfo.cs
+D:\PROJECTS\MaxLoud\tests\EndpointMeterProbe\obj\Release\net5.0-windows\EndpointMeterProbe.csproj.CoreCompileInputs.cache
+D:\PROJECTS\MaxLoud\tests\EndpointMeterProbe\obj\Release\net5.0-windows\EndpointMeterProbe.dll
+D:\PROJECTS\MaxLoud\tests\EndpointMeterProbe\obj\Release\net5.0-windows\ref\EndpointMeterProbe.dll
+D:\PROJECTS\MaxLoud\tests\EndpointMeterProbe\obj\Release\net5.0-windows\EndpointMeterProbe.pdb
+D:\PROJECTS\MaxLoud\tests\EndpointMeterProbe\obj\Release\net5.0-windows\EndpointMeterProbe.genruntimeconfig.cache

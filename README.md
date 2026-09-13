@@ -191,14 +191,18 @@ MaxLoud.exe --recover-audio
 
 ## Сборка
 
-Проект рассчитан на x64.
+C#-приложение MaxLoud и нативный `MaxLoudApo.dll` собираются отдельно для x64 и x86.
 
-Конфигурации:
+Конфигурации C#-приложения:
 
 ```text
 Debug|x64
+Debug|x86
 Release|x64
+Release|x86
 ```
+
+Каждая конфигурация solution собирает C#-приложение и APO одной архитектуры.
 
 Используемая на текущей машине сборочная среда:
 
@@ -206,39 +210,39 @@ Release|x64
 - Windows SDK 10.0.19041.0;
 - .NET SDK 5.0.
 
-Пример Release-сборки:
+Release publish C#-приложения:
 
 ```powershell
-cd D:\PROJECTS\MaxLoud
-& 'C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe' .\MaxLoud.sln /p:Configuration=Release /p:Platform=x64 /m /nodeReuse:false
+dotnet publish .\MaxLoud.csproj -c Release -r win-x64 -p:Platform=x64
+dotnet publish .\MaxLoud.csproj -c Release -r win-x86 -p:Platform=x86
 ```
 
 Результаты:
 
 ```text
-bin\Debug\MaxLoud.exe
-bin\Debug\apo\MaxLoudApo.dll
-
-bin\Release\MaxLoud.exe
-bin\Release\apo\MaxLoudApo.dll
+Build\publish\x64\MaxLoud.exe
+Build\publish\x86\MaxLoud.exe
+Build\publish\x64\apo\MaxLoudApo.dll
+Build\publish\x86\apo\MaxLoudApo.dll
 ```
 
 ## Структура проекта
-
 ```text
 MaxLoud\
 ├── MaxLoud.sln
 ├── MaxLoud.csproj
 ├── README.md
 ├── DEVELOPMENT_NOTES.md
+├── Sources\
+│   └── App\
+├── Resources\
+├── Build\
+│   ├── bin\
+│   └── obj\
 ├── src\
-│   ├── App\
 │   └── Apo\
 ├── tests\
-├── driver\
-├── res\
-├── bin\
-└── obj\
+└── driver\
 ```
 
 Инженерные ограничения, найденные ошибки, правила безопасной работы с Windows Audio и заметки для дальнейшей разработки собраны отдельно в `DEVELOPMENT_NOTES.md`.

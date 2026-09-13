@@ -444,7 +444,7 @@ Dark
 Базовая авторская палитра больше не копируется между проектами. Канонический source-модуль:
 
 ```text
-D:\PROJECTS\Shared\RokkyUI\RokkyThemePalette.cs
+D:\PROJECTS\Shared\NeoUI\NeoThemePalette.cs
 ```
 
 MaxLoud, Network Diagram и HIDEME подключают этот файл как linked source и адаптируют его к своему WPF/WinForms UI. `light.png`/`dark.png` и остальные проектные assets остаются локальными.
@@ -480,13 +480,13 @@ ru
 
 ```text
 System.Windows.Forms.ContextMenuStrip
-+ D:\PROJECTS\Shared\RokkyUI\RokkyTrayMenuStyle.cs
++ D:\PROJECTS\Shared\NeoUI\NeoTrayMenuStyle.cs
 + фиксированные dark palette colors
 ```
 
-MaxLoud и Network Diagram используют один и тот же linked-source renderer/layout. Не возвращать WPF tray menu и не создавать локальную копию `RokkyTrayMenuStyle`.
+MaxLoud и Network Diagram используют один и тот же linked-source renderer/layout. Не возвращать WPF tray menu и не создавать локальную копию `NeoTrayMenuStyle`.
 
-Для popup, открываемого вручную из native `Shell_NotifyIcon` callback, перед `Show()` нужен foreground-owner contract (`SetForegroundWindow`), иначе меню может не закрываться при клике по рабочему столу/другому окну. Общий `RokkyTrayMenuStyle.Show()` делает это и после закрытия отправляет benign `WM_NULL` owner-окну.
+Для popup, открываемого вручную из native `Shell_NotifyIcon` callback, перед `Show()` нужен foreground-owner contract (`SetForegroundWindow`), иначе меню может не закрываться при клике по рабочему столу/другому окну. Общий `NeoTrayMenuStyle.Show()` делает это и после закрытия отправляет benign `WM_NULL` owner-окну.
 
 Важно: если `ToolStripMenuItem.Text` заполняется уже после создания меню, нельзя оставлять размеры, рассчитанные при пустом тексте. При каждом открытии tray menu нужно измерять актуальные локализованные строки через `TextRenderer.MeasureText`, задавать общую ширину пунктов и только затем вызывать `Show()`. Иначе `AutoSize=false` оставляет пункты шириной порядка 40 px, renderer получает нулевую область текста и меню выглядит пустым.
 
@@ -497,8 +497,8 @@ MaxLoud и Network Diagram используют один и тот же linked-s
 Нормальный запуск использует named semaphore/event:
 
 ```text
-Local\RokkyStudio.MaxLoud.SingleInstance.x64
-Local\RokkyStudio.MaxLoud.Activate.x64
+Local\RokkyStudio.MaxLoud.SingleInstance
+Local\RokkyStudio.MaxLoud.Activate
 ```
 
 Второй запуск:
@@ -574,12 +574,16 @@ Loader log нужен для `DllGetClassObject`, `IClassFactory::CreateInstance
 
 ## 22. Сборка
 
-Только x64:
+C# frontend:
 
 ```text
 Debug|x64
+Debug|x86
 Release|x64
+Release|x86
 ```
+
+`MaxLoudApo.dll` собирается отдельно для x64 и x86; solution использует APO той же архитектуры, что и C# frontend.
 
 Среда текущей машины:
 
@@ -596,13 +600,20 @@ MSBuild:
 C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe
 ```
 
-Результаты:
+Release publish C# frontend:
 
 ```text
-bin\Debug\MaxLoud.exe
-bin\Debug\apo\MaxLoudApo.dll
-bin\Release\MaxLoud.exe
-bin\Release\apo\MaxLoudApo.dll
+Build\publish\x64\MaxLoud.exe
+Build\publish\x86\MaxLoud.exe
+```
+
+Нативный APO:
+
+```text
+Build\bin\x64\Debug\apo\MaxLoudApo.dll
+Build\bin\x86\Debug\apo\MaxLoudApo.dll
+Build\bin\x64\Release\apo\MaxLoudApo.dll
+Build\bin\x86\Release\apo\MaxLoudApo.dll
 ```
 
 Если MSBuild stdout уже говорит `Build succeeded`, но managed agent job остаётся `running=true`, это может быть зависший MSBuild/node reuse. Для сборок использовать `/nodeReuse:false`, а зависший job после подтверждённого успеха останавливать.
@@ -674,5 +685,5 @@ EqGain0...
 5. Обновить APO через versioned install.
 6. Проверить реальный `audiodg.exe`: `LockForProcess END success` и растущий `APOProcess valid`.
 7. При UI-only изменениях не перестраивать audio graph без причины.
-8. После изменения tray проверять именно живой `D:\PROJECTS\MaxLoud\bin\Release\MaxLoud.exe`, а не старый экземпляр.
+8. После изменения tray проверять именно живой `D:\PROJECTS\MaxLoud\Build\bin\x64\Release\MaxLoud.exe`, а не старый экземпляр.
 9. Обновлять этот файл, если найден новый системный нюанс или реально подтверждённая ошибка.

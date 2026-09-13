@@ -1,0 +1,11 @@
+.idea/
+.vs/
+Build/
+bin/
+obj/
+*.user
+*.suo
+*.DotSettings.user
+*.obj
+*.pdb
+*.ilk

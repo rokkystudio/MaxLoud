@@ -1,0 +1,4 @@
+LIBRARY "MaxLoudApo"
+EXPORTS
+    DllCanUnloadNow PRIVATE
+    DllGetClassObject PRIVATE

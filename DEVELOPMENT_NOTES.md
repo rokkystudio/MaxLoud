@@ -603,34 +603,24 @@ C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bi
 Release publish C# frontend:
 
 ```text
-Build\publish\x64\MaxLoud.exe
-Build\publish\x86\MaxLoud.exe
+App\Build\publish\x64\MaxLoud.exe
+App\Build\publish\x86\MaxLoud.exe
 ```
 
 Нативный APO:
 
 ```text
-Build\bin\x64\Debug\apo\MaxLoudApo.dll
-Build\bin\x86\Debug\apo\MaxLoudApo.dll
-Build\bin\x64\Release\apo\MaxLoudApo.dll
-Build\bin\x86\Release\apo\MaxLoudApo.dll
+Apo\Build\bin\x64\Debug\MaxLoudApo.dll
+Apo\Build\bin\x86\Debug\MaxLoudApo.dll
+Apo\Build\bin\x64\Release\MaxLoudApo.dll
+Apo\Build\bin\x86\Release\MaxLoudApo.dll
 ```
 
 Если MSBuild stdout уже говорит `Build succeeded`, но managed agent job остаётся `running=true`, это может быть зависший MSBuild/node reuse. Для сборок использовать `/nodeReuse:false`, а зависший job после подтверждённого успеха останавливать.
 
 ---
 
-## 23. Тестовые утилиты
-
-`tests\EndpointToggleProbe` — независимый процесс для проверки system enhancements backend.
-
-Важно: старые результаты этого probe до перехода на PolicyConfig могут относиться к прямому Registry backend и не воспроизводить поведение Sound Control Panel.
-
-Standalone APO smoke tests полезны, но не заменяют реальный `audiodg.exe`.
-
----
-
-## 24. Realtek Audio Control API
+## 23. Realtek Audio Control API
 
 В установленном UWP-пакете Realtek найдены WinRT классы:
 
@@ -656,7 +646,7 @@ EqGain0...
 
 ---
 
-## 25. Что не делать в новой ветке
+## 24. Что не делать в новой ветке
 
 Не делать следующее без новых доказательств/отдельного решения:
 
@@ -676,7 +666,7 @@ EqGain0...
 
 ---
 
-## 26. Рекомендуемый порядок работы после открытия новой ветки
+## 25. Рекомендуемый порядок работы
 
 1. Прочитать этот файл.
 2. Прочитать текущий `README.md`.
@@ -685,5 +675,5 @@ EqGain0...
 5. Обновить APO через versioned install.
 6. Проверить реальный `audiodg.exe`: `LockForProcess END success` и растущий `APOProcess valid`.
 7. При UI-only изменениях не перестраивать audio graph без причины.
-8. После изменения tray проверять именно живой `D:\PROJECTS\MaxLoud\Build\bin\x64\Release\MaxLoud.exe`, а не старый экземпляр.
+8. После изменения tray проверять именно живой `D:\PROJECTS\MaxLoud\App\Build\bin\x64\Release\MaxLoud.exe`, а не старый экземпляр.
 9. Обновлять этот файл, если найден новый системный нюанс или реально подтверждённая ошибка.

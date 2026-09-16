@@ -213,36 +213,39 @@ Release|x86
 Release publish C#-приложения:
 
 ```powershell
-dotnet publish .\MaxLoud.csproj -c Release -r win-x64 -p:Platform=x64
-dotnet publish .\MaxLoud.csproj -c Release -r win-x86 -p:Platform=x86
+dotnet publish .\App\MaxLoud.csproj -c Release -r win-x64 -p:Platform=x64
+dotnet publish .\App\MaxLoud.csproj -c Release -r win-x86 -p:Platform=x86
 ```
 
 Результаты:
 
 ```text
-Build\publish\x64\MaxLoud.exe
-Build\publish\x86\MaxLoud.exe
-Build\publish\x64\apo\MaxLoudApo.dll
-Build\publish\x86\apo\MaxLoudApo.dll
+App\Build\publish\x64\MaxLoud.exe
+App\Build\publish\x86\MaxLoud.exe
+App\Build\publish\x64\apo\MaxLoudApo.dll
+App\Build\publish\x86\apo\MaxLoudApo.dll
 ```
 
 ## Структура проекта
 ```text
 MaxLoud\
+├── App\
+│   ├── MaxLoud.csproj
+│   ├── Directory.Build.props
+│   ├── Directory.Build.targets
+│   ├── Sources\
+│   ├── Resources\
+│   └── Build\
+├── Apo\
+│   ├── MaxLoudApo.vcxproj
+│   ├── MaxLoudApo.cpp
+│   ├── MaxLoudApo.h
+│   ├── MaxLoudApo.def
+│   ├── dllmain.cpp
+│   └── Build\
 ├── MaxLoud.sln
-├── MaxLoud.csproj
 ├── README.md
-├── DEVELOPMENT_NOTES.md
-├── Sources\
-│   └── App\
-├── Resources\
-├── Build\
-│   ├── bin\
-│   └── obj\
-├── src\
-│   └── Apo\
-├── tests\
-└── driver\
+└── DEVELOPMENT_NOTES.md
 ```
 
 Инженерные ограничения, найденные ошибки, правила безопасной работы с Windows Audio и заметки для дальнейшей разработки собраны отдельно в `DEVELOPMENT_NOTES.md`.

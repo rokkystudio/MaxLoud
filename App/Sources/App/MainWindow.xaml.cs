@@ -68,6 +68,7 @@ namespace MaxLoud
         public MainWindow()
         {
             InitializeComponent();
+            TitleBar.VersionText = ApplicationInfo.VersionText;
             DataContext = this;
 
             _settingsStore = new SettingsStore();

@@ -76,7 +76,9 @@ namespace MaxLoud
         }
 
         /// <summary>
-        /// Adds or updates the notification icon and tooltip. The caller owns the Icon lifetime.
+        /// Adds or updates the notification icon and tooltip. If the shell already owns the icon
+        /// while the local state is not synchronized, a failed add is confirmed through modify.
+        /// The caller owns the Icon lifetime.
         /// </summary>
         public void SetIcon(IntPtr iconHandle, string tooltip)
         {
@@ -96,21 +98,34 @@ namespace MaxLoud
             _tooltip = NormalizeTooltip(tooltip);
 
             var data = CreateNotifyIconData(_iconHandle, _tooltip);
-            if (_added && ShellNotifyIcon(NimModify, ref data))
+            if (_added)
             {
+                if (ShellNotifyIcon(NimModify, ref data))
+                {
+                    return;
+                }
+
+                _added = false;
+            }
+
+            data = CreateNotifyIconData(_iconHandle, _tooltip);
+            if (ShellNotifyIcon(NimAdd, ref data))
+            {
+                _added = true;
+                SetNotifyIconVersion();
                 return;
             }
 
-            _added = false;
             data = CreateNotifyIconData(_iconHandle, _tooltip);
-            if (!ShellNotifyIcon(NimAdd, ref data))
+            if (ShellNotifyIcon(NimModify, ref data))
             {
-                throw new InvalidOperationException(
-                    "Shell_NotifyIcon не смог добавить значок MaxLoud.");
+                _added = true;
+                SetNotifyIconVersion();
+                return;
             }
 
-            _added = true;
-            SetNotifyIconVersion();
+            throw new InvalidOperationException(
+                "Shell_NotifyIcon не смог добавить или обновить значок MaxLoud.");
         }
 
         /// <summary>

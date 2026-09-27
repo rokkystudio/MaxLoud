@@ -189,7 +189,9 @@ namespace MaxLoud
         }
 
         /// <summary>
-        /// Creates the native tray icon after the WPF window has been initialized.
+        /// Creates the native tray icon service after the WPF window has been initialized,
+        /// starts tray-state timers and performs the initial state update. Notification-area
+        /// registration failures remain non-fatal and are retried by subsequent status updates.
         /// The main window itself stays hidden unless integration needs attention.
         /// </summary>
         public void StartTrayApplication()
@@ -205,10 +207,6 @@ namespace MaxLoud
             _trayIconService.LeftClick += TrayIcon_OnLeftClick;
             _trayIconService.LeftDoubleClick += TrayIcon_OnLeftDoubleClick;
             _trayIconService.RightClick += TrayIcon_OnRightClick;
-
-            _trayIconService.SetIcon(
-                _inactiveTrayIcon,
-                "MaxLoud");
 
             _statusTimer.Start();
             _startupTimer.Start();
